@@ -74,7 +74,6 @@ export async function streamChat(messages: any[], userName: string, memoryContex
       { role: 'system', content: systemPrompt },
       ...messages,
     ],
-    maxTokens: defaultAIConfig.maxTokens,
     temperature: defaultAIConfig.temperature,
   });
 

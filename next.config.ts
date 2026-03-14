@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   },
   // 开发配置
   devIndicators: {
-    appIsrStatus: true,
+    position: 'bottom-right',
   },
 };
 
