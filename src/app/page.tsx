@@ -1,6 +1,7 @@
 import { WelcomeCard } from '@/components/home/WelcomeCard';
 import { MoodDots } from '@/components/mood/MoodDots';
 import { AppShell } from '@/components/layout/AppShell';
+import { Wind, Heart } from 'lucide-react';
 
 // Mock 数据
 const mockRecentMoods = [
@@ -62,7 +63,7 @@ export default function HomePage() {
                 className="w-10 h-10 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: 'var(--color-primary-light)' }}
               >
-                <span className="text-lg">🌅</span>
+                <Wind className="w-5 h-5" style={{ color: 'var(--color-text-primary)' }} />
               </div>
               <div>
                 <p
@@ -88,7 +89,7 @@ export default function HomePage() {
                 className="w-10 h-10 rounded-full flex items-center justify-center"
                 style={{ backgroundColor: 'var(--color-mood-secondary)' }}
               >
-                <span className="text-lg">📝</span>
+                <Heart className="w-5 h-5" style={{ color: 'var(--color-text-primary)' }} />
               </div>
               <div>
                 <p

@@ -15,14 +15,14 @@ interface MoodDotsProps {
   onDotClick?: (date: Date) => void;
 }
 
-// 情绪等级配置 - 从暖棕到雾蓝的渐变
+// 情绪等级配置 - 从雾蓝到暖棕的渐变（低落冷色调，愉悦暖色调）
 const moodConfig = [
   { label: '', color: '', desc: '' }, // 0 index unused
-  { label: '低落', color: '#C4A89A', desc: '需要关爱' },      // 1 - 深奶茶（低落）
-  { label: '一般', color: '#D4C5B5', desc: '有点疲惫' },      // 2 - 奶茶色
+  { label: '低落', color: '#7A93A4', desc: '需要关爱' },      // 1 - 深雾蓝（低落）
+  { label: '一般', color: '#9CAFBE', desc: '有点疲惫' },      // 2 - 雾蓝
   { label: '平静', color: '#B8C5D0', desc: '状态平稳' },      // 3 - 浅雾蓝
-  { label: '不错', color: '#8BA5B5', desc: '心情愉悦' },      // 4 - 雾蓝
-  { label: '很好', color: '#5E8B9E', desc: '充满活力' },      // 5 - 深雾蓝（愉悦）
+  { label: '不错', color: '#C9B8A7', desc: '心情愉悦' },      // 4 - 奶茶色
+  { label: '很好', color: '#E8C4A8', desc: '充满活力' },      // 5 - 暖杏色（愉悦）
 ];
 
 // 空状态颜色
