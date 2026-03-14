@@ -1,129 +1,258 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --color-background: var(--color-bg-primary);
+  --color-foreground: var(--color-text-primary);
+  --font-sans: var(--font-body), 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --font-display: var(--font-display), 'Noto Serif SC', serif;
+
+  /* 圆角 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* shadcn兼容 */
+  --color-border: var(--color-border);
+  --color-ring: var(--color-primary);
+  --color-input: var(--color-bg-tertiary);
+  --color-card: var(--color-bg-secondary);
+  --color-card-foreground: var(--color-text-primary);
+  --color-primary-foreground: var(--color-text-primary);
+  --color-secondary: var(--color-bg-tertiary);
+  --color-secondary-foreground: var(--color-text-primary);
+  --color-muted: var(--color-bg-tertiary);
+  --color-muted-foreground: var(--color-text-muted);
+  --color-accent: var(--color-primary-light);
+  --color-accent-foreground: var(--color-text-primary);
+  --color-destructive: var(--color-error);
 }
+
+/* ==========================================
+   愈见 Design Tokens
+   奶茶午后 + 雾蓝清晨
+   ========================================== */
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* 主色调 - 奶茶午后 */
+  --color-primary: #D4C5B5;
+  --color-primary-hover: #C9B8A7;
+  --color-primary-light: #E8DFD5;
+  --color-primary-subtle: #F5F0EA;
+
+  /* 辅助色 */
+  --color-secondary: #C9B8A7;
+  --color-accent: #B8A99A;
+
+  /* 情绪数据专用 - 雾蓝清晨 */
+  --color-mood-bg: #F5F7FA;
+  --color-mood-primary: #9CAFBE;
+  --color-mood-secondary: #B8C5D0;
+  --color-mood-accent: #7A93A4;
+
+  /* 情绪等级色（1-5分） */
+  --color-mood-1: #E8DFD5;
+  --color-mood-2: #D4C5B5;
+  --color-mood-3: #C9B8A7;
+  --color-mood-4: #9CAFBE;
+  --color-mood-5: #7A93A4;
+
+  /* 功能色 */
+  --color-success: #A8B5A0;
+  --color-warning: #D4B896;
+  --color-error: #C9A9A9;
+
+  /* 中性色 */
+  --color-bg-primary: #FAF7F2;
+  --color-bg-secondary: #FFFFFF;
+  --color-bg-tertiary: #F5F0EA;
+
+  --color-text-primary: #5C5346;
+  --color-text-secondary: #8B7F6F;
+  --color-text-muted: #A89B8C;
+
+  --color-border: #E8DFD5;
+  --color-divider: #F0E8E0;
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px rgba(92, 83, 70, 0.04);
+  --shadow-md: 0 2px 8px rgba(92, 83, 70, 0.06);
+  --shadow-lg: 0 4px 16px rgba(92, 83, 70, 0.08);
+
+  /* 动效 */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
+/* ==========================================
+   基础样式
+   ========================================== */
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--color-border);
   }
-  body {
-    @apply bg-background text-foreground;
-  }
+
   html {
-    @apply font-sans;
+    font-family: 'Nunito', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', 'Noto Serif SC', serif;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+}
+
+/* ==========================================
+   自定义组件样式
+   ========================================== */
+
+@layer components {
+  /* 页面容器 */
+  .app-container {
+    min-height: 100vh;
+    background-color: var(--color-bg-primary);
+  }
+
+  /* 卡片 */
+  .yujian-card {
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+  }
+
+  /* 按钮 - 主要 */
+  .yujian-btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-full);
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .yujian-btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: scale(1.02);
+  }
+
+  /* 按钮 - 次要 */
+  .yujian-btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border-radius: var(--radius-full);
+    padding: 12px 24px;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+  }
+
+  .yujian-btn-secondary:hover {
+    background-color: var(--color-primary-subtle);
+  }
+
+  /* 对话气泡 - AI */
+  .chat-bubble-ai {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 20px 20px 20px 8px;
+    padding: 16px 20px;
+    max-width: 80%;
+    line-height: 1.7;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* 对话气泡 - 用户 */
+  .chat-bubble-user {
+    background-color: var(--color-primary);
+    color: var(--color-text-primary);
+    border-radius: 20px 20px 8px 20px;
+    padding: 16px 20px;
+    max-width: 80%;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* 情绪小点 */
+  .mood-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: transform var(--transition-base);
+  }
+
+  .mood-dot:hover {
+    transform: scale(1.3);
+  }
+
+  .mood-dot.today {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--color-text-primary);
+  }
+
+  /* 输入框 */
+  .yujian-input {
+    background-color: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 12px 16px;
+    color: var(--color-text-primary);
+    transition: all var(--transition-fast);
+  }
+
+  .yujian-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(212, 197, 181, 0.2);
+  }
+}
+
+/* ==========================================
+   动画
+   ========================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 1.5s ease-in-out infinite;
 }

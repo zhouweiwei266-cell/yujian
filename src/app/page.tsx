@@ -1,65 +1,113 @@
-import Image from "next/image";
+import { WelcomeCard } from '@/components/home/WelcomeCard';
+import { MoodDots } from '@/components/mood/MoodDots';
+import { AppShell } from '@/components/layout/AppShell';
 
-export default function Home() {
+// Mock 数据
+const mockRecentMoods = [
+  { date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), score: 3, hasEntry: true },
+  { date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), score: 2, hasEntry: true },
+  { date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), score: 4, hasEntry: true },
+  { date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), score: 3, hasEntry: true },
+  { date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), score: 5, hasEntry: true },
+  { date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), score: 4, hasEntry: true },
+  { date: new Date(), score: 0, hasEntry: false }, // 今天还未记录
+];
+
+const mockLastMood = {
+  score: 4,
+  note: '昨天面试准备得还不错',
+  date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
+};
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <AppShell>
+      <div className="space-y-8">
+        {/* 欢迎卡片 */}
+        <WelcomeCard
+          userName="朋友"
+          hasMemory={true}
+          lastMood={mockLastMood}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* 情绪小点图 */}
+        <section>
+          <MoodDots moods={mockRecentMoods} />
+        </section>
+
+        {/* 快捷功能 */}
+        <section
+          className="p-6 rounded-2xl"
+          style={{
+            backgroundColor: 'var(--color-bg-secondary)',
+            borderRadius: 'var(--radius-lg)',
+            boxShadow: 'var(--shadow-sm)',
+          }}
+        >
+          <h3
+            className="text-lg font-semibold mb-4"
+            style={{
+              fontFamily: 'var(--font-display)',
+              color: 'var(--color-text-primary)',
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            今日建议
+          </h3>
+          <div className="space-y-3">
+            <div
+              className="p-4 rounded-xl flex items-center gap-3"
+              style={{ backgroundColor: 'var(--color-bg-tertiary)' }}
+            >
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: 'var(--color-primary-light)' }}
+              >
+                <span className="text-lg">🌅</span>
+              </div>
+              <div>
+                <p
+                  className="font-medium"
+                  style={{ color: 'var(--color-text-primary)' }}
+                >
+                  晨间深呼吸
+                </p>
+                <p
+                  className="text-sm"
+                  style={{ color: 'var(--color-text-muted)' }}
+                >
+                  醒来后的5分钟，给大脑一个温柔的启动
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="p-4 rounded-xl flex items-center gap-3"
+              style={{ backgroundColor: 'var(--color-bg-tertiary)' }}
+            >
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: 'var(--color-mood-secondary)' }}
+              >
+                <span className="text-lg">📝</span>
+              </div>
+              <div>
+                <p
+                  className="font-medium"
+                  style={{ color: 'var(--color-text-primary)' }}
+                >
+                  三件小事
+                </p>
+                <p
+                  className="text-sm"
+                  style={{ color: 'var(--color-text-muted)' }}
+                >
+                  写下今天让你感恩或开心的小事
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </AppShell>
   );
 }
